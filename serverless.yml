@@ -1,4 +1,5 @@
-app: todo-list-serverless
+org: raulledo
+app: api-rest
 service: api-rest
 
 frameworkVersion: ">=1.1.0"
