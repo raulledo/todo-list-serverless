@@ -45,4 +45,4 @@ def detect_language(text):
 
     
 def translate_text(text, source, target):
-    return translate.traslate_text(Text=text, SourceLanguageCode=source, TargetLanguageCode=target)
+    return translate.translate_text(Text=text, SourceLanguageCode=source, TargetLanguageCode=target)
