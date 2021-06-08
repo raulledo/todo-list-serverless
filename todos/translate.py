@@ -42,7 +42,7 @@ def get(event, context):
 
 
 def detect_language(text):
-    return comprehend.detect_dominant_language(Text='string')
+    return comprehend.detect_dominant_language(Text=text)
 
     
 def translate_text(text, source, target):
