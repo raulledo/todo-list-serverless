@@ -1,4 +1,3 @@
-# change: test cd/ci
 import os
 import json
 
@@ -42,7 +41,7 @@ def get(event, context):
 
 
 def detect_language(text):
-    return comprehend.detect_dominant_language(text='string')
+    return comprehend.detect_dominant_language(Text=text)
 
     
 def translate_text(text, source, target):
