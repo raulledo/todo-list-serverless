@@ -1,7 +1,6 @@
 # change: test cd/ci
 import os
 import json
-import com.amazonaws.services.comprehend
 
 from todos import decimalencoder
 import boto3
