@@ -25,7 +25,7 @@ def get(event, context):
     text = result['Item']['text']
     
     # detect source language
-    source_language = detect_language(text);
+    source_language = detect_language(text)['Languages'][0]['LanguageCode'];
     
     # translate text
     result['Item']['text'] = translate_text(text, source_language, target)['TranslateText']
