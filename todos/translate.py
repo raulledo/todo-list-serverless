@@ -19,7 +19,7 @@ def get(event, context):
     )
     
     # set target language
-    target = event['pathParameters']['id']
+    target = event['pathParameters']['lang']
     
     # set text
     text = result['Item']['text']
