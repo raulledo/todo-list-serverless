@@ -42,7 +42,6 @@ def get(event, context):
 
 def detect_language(text):
     return comprehendAws.detect_dominant_language(Text=text)
-
     
 def translate_text(text, source, target):
     return translateAws.translate_text(Text=text, SourceLanguageCode=source, TargetLanguageCode=target)
