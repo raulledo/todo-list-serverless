@@ -1,12 +1,11 @@
-# change: test cd/ci
 import os
 import json
 
 from todos import decimalencoder
 import boto3
 dynamodb = boto3.resource('dynamodb')
-translate = boto3.client('translate')
-comprehend = boto3.client('comprehend')
+translateAws = boto3.client('translate')
+comprehendAws = boto3.client('comprehend')
 
 
 def get(event, context):
@@ -20,16 +19,16 @@ def get(event, context):
     )
     
     # set target language
-    target = event['pathParameters']['id']
+    target = event['pathParameters']['lang']
     
     # set text
     text = result['Item']['text']
     
     # detect source language
-    source_language = detect_language(text);
+    source_language = detect_language(text)['Languages'][0]['LanguageCode'];
     
     # translate text
-    result['Item']['text'] = translate_text(text, source_language, target)['TranslateText']
+    result['Item']['text'] = translate_text(text, source_language, target)['TranslatedText']
 
     # create a response
     response = {
@@ -42,8 +41,7 @@ def get(event, context):
 
 
 def detect_language(text):
-    return comprehend.detect_dominant_language(Text=text)
-
+    return comprehendAws.detect_dominant_language(Text=text)
     
 def translate_text(text, source, target):
-    return translate.traslate_text(Text=text, SourceLanguageCode=source, TargetLanguageCode=target)
+    return translateAws.translate_text(Text=text, SourceLanguageCode=source, TargetLanguageCode=target)
